@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
+import {Screen} from './components/Screen';
+import {Control} from './components/Control';
+
+
+// export type ValueType = 0 | 1 | 2 | 3 | 4 | 5
+export type ClickerType = 'inc' | 'reset';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [value, setValue] = useState<number>(0);
+
+    const changeValue = (clicker: ClickerType) => {
+        if (clicker === 'inc') {
+            setValue(value + 1);
+        }
+        if (clicker === 'reset') {
+            setValue(0);
+        }
+    }
+
+    return (
+        <div className="App">
+
+            <div className="clicker">
+                <Screen value={value}/>
+
+                <Control value={value} changeValue={changeValue}/>
+            </div>
+
+        </div>
+    );
 }
+
 
 export default App;
