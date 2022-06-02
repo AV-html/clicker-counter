@@ -9,7 +9,7 @@ html {
 
 body {
     background-color: rgb(42, 44, 53);
-    color: rgb(42, 44, 53);
+    color: rgb(99, 218, 252);
     height: 100%;
 }
 
@@ -22,12 +22,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 
-.clicker {
-    border: 3px solid rgb(99, 218, 252);
+.block {
     flex: 0 1 500px;
-    margin: 0 auto;
+    border: 3px solid rgb(99, 218, 252);
+    margin: 0 auto 5em;
     border-radius: 1rem;
     padding: 2rem;
+}
+
+
+.screen {
+    border: 3px solid rgb(99, 218, 252);
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.control {
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 3px solid rgb(99, 218, 252);
 }

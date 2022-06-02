@@ -1,32 +1,48 @@
 import React, {useState} from 'react';
 import './App.css';
-
-import {Screen} from './components/Screen';
 import {Control} from './components/Control';
+import {Screen} from './components/Screen';
+import {InputValues} from './components/InputValues';
+import {SetValues} from './components/SetValues';
 
 
 // export type ValueType = 0 | 1 | 2 | 3 | 4 | 5
-export type ClickerType = 'inc' | 'reset';
 
 function App() {
     const [value, setValue] = useState<number>(0);
 
-    const changeValue = (clicker: ClickerType) => {
-        if (clicker === 'inc') {
+    const changeValue = () => {
+        if (value < 5) {
             setValue(value + 1);
         }
-        if (clicker === 'reset') {
-            setValue(0);
-        }
     }
+    const resetValue = () => {
+        setValue(0);
+    }
+
 
     return (
         <div className="App">
+            <div className="block">
+                <div className="screen">
+                    <InputValues/>
+                </div>
+                <div className="control">
+                    <SetValues/>
+                </div>
+            </div>
 
-            <div className="clicker">
-                <Screen value={value}/>
+            <div className="block">
+                <div className="screen">
+                    <Screen value={value}/>
+                </div>
 
-                <Control value={value} changeValue={changeValue}/>
+                <div className="control">
+                    <Control value={value}
+                             changeValue={changeValue}
+                             resetValue={resetValue}
+                    />
+                </div>
             </div>
 
         </div>
