@@ -1,39 +1,8 @@
 .control {
     display: flex;
-
-    padding: 2rem;
-    border-radius: 1rem;
-    border: 3px solid rgb(99, 218, 252);
 }
 
 .control button {
     flex: 1 1 auto;
-
-    font-size: 4rem;
-    border-radius: 1rem;
-    font-weight: bold;
-
-    background-color: rgb(99, 218, 252);
-    border: none;
-    cursor: pointer;
-    margin-right: 4.5rem;
-
-    transition: all 0.3s ease 0s;
 }
 
-.control button:hover {
-    background-color: #AC94FE;
-}
-
-.control button:active {
-    background-color: #A9EBFE;
-}
-
-.control button:last-child {
-    margin-right: 0;
-}
-
-.control button:disabled {
-    background-color: rgb(64, 114, 133);
-    color: rgb(42, 44, 51);
-}

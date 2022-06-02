@@ -1,13 +1,5 @@
 
 .screen {
-    background-color: rgb(99, 218, 252);
-    border-radius: 1rem;
-    padding: 4rem 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.screen span {
     font-size: 8rem;
     font-weight: bold;
 }

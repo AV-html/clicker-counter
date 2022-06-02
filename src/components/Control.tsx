@@ -1,21 +1,21 @@
 import React from 'react';
-import {ClickerType} from '../App';
 import styles from './Control.module.css'
 import {Button} from './Button';
 
 
 type PropsType = {
-    changeValue: (clicker: ClickerType) => void
     value: number
+    changeValue: () => void
+    resetValue: () => void
 }
 
 export function Control(props: PropsType) {
 
     const onClickIncHandler = () => {
-        props.changeValue('inc')
+        props.changeValue()
     }
     const onClickResetHandler = () => {
-        props.changeValue('reset')
+        props.resetValue()
     }
 
     const isDisabledInc = props.value > 4
@@ -25,15 +25,6 @@ export function Control(props: PropsType) {
         <div className={styles.control}>
             <Button callback={onClickIncHandler} isDisabled={isDisabledInc} title={'inc'}/>
             <Button callback={onClickResetHandler} isDisabled={isDisabledReset} title={'reset'}/>
-
-
-            {/*<button onClick={onClickIncHandler} disabled={isDisabledInc}>*/}
-            {/*    inc*/}
-            {/*</button>*/}
-
-            {/*<button onClick={onClickResetHandler} disabled={isDisabledReset}>*/}
-            {/*    reset*/}
-            {/*</button>*/}
         </div>
     )
 }

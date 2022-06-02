@@ -1,0 +1,31 @@
+.button {
+    font-size: 4rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    color: rgb(42, 44, 53);
+
+    background-color: rgb(99, 218, 252);
+    padding: 0 1.25em;
+    border: none;
+    cursor: pointer;
+    margin-right: 4.5rem;
+
+    transition: all 0.3s ease 0s;
+}
+
+.button:hover {
+    background-color: #AC94FE;
+}
+
+.button:active {
+    background-color: #A9EBFE;
+}
+
+.button:last-child {
+    margin-right: 0;
+}
+
+.button:disabled {
+    background-color: rgb(64, 114, 133);
+    color: rgb(42, 44, 51);
+}
