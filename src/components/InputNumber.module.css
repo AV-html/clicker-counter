@@ -1,0 +1,39 @@
+.label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+}
+
+.title {
+    font-size: 3em;
+    line-height: 150%;
+}
+
+.number {
+    border: 2px solid rgb(99, 218, 252);
+    border-radius: 1rem;
+    padding: 5px;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(42, 44, 53);
+    font-size: 16px;
+}
+
+.number::placeholder {
+    color: #a0a0a0;
+}
+
+.number:invalid {
+    border: 2px solid red;
+    background-color: lightcoral;
+}
+
+.number:valid {
+    border: 2px solid rgb(99, 218, 252);
+}
+
+.number:focus {
+    outline: none;
+}
