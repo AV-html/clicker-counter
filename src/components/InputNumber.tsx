@@ -3,9 +3,11 @@ import styles from './InputNumber.module.css';
 
 type PropsType = {
     title: string
+    value: number
     max: number
     min: number
     placeholder: string
+
 }
 
 export function InputNumber(props: PropsType) {
@@ -17,6 +19,7 @@ export function InputNumber(props: PropsType) {
                    min={props.min}
                    placeholder={props.placeholder}
                    className={styles.number}
+                   value={props.value}
             />
         </label>
     );

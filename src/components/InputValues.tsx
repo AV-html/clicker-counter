@@ -2,7 +2,9 @@ import React from 'react';
 import {InputNumber} from './InputNumber';
 import styles from './InputValues.module.css';
 
-type PropsType = {}
+type PropsType = {
+
+}
 
 export function InputValues(props: PropsType) {
     return (
@@ -11,14 +13,16 @@ export function InputValues(props: PropsType) {
                 <InputNumber title={'Max value:'}
                              max={5}
                              min={0}
-                             placeholder={'5'}
+                             placeholder={'max'}
+                             value={5}
                 />
             </div>
             <div className={styles.min}>
                 <InputNumber title={'Start value:'}
                              max={5}
                              min={0}
-                             placeholder={'0'}
+                             placeholder={'min'}
+                             value={0}
                 />
             </div>
         </div>
