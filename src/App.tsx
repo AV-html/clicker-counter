@@ -12,12 +12,12 @@ function App() {
     const [value, setValue] = useState<number>(0);
 
     const changeValue = () => {
-        if (value < 5) {
+        if (value < maxValue) {
             setValue(value + 1);
         }
     }
     const resetValue = () => {
-        setValue(0);
+        setValue(minValue);
     }
 
     const [editMode, setEditMode] = useState<boolean>(false)
@@ -39,6 +39,7 @@ function App() {
     }
     const offEditMode = () => {
         setEditMode(false);
+        setValue(minValue)
     }
 
     useEffect(() => {
@@ -47,6 +48,7 @@ function App() {
         if (minValue && maxValue) {
             setMinValue(Number(minValue))
             setMaxValue(Number(maxValue))
+            setValue(Number(minValue))
         }
     }, [])
 
@@ -73,8 +75,8 @@ function App() {
                                  changeMinValue={changeMinValue}
                                  maxValue={maxValue}
                                  minValue={minValue}
-                                 errorMinValue={errorMinValue}
                                  errorMaxValue={errorMaxValue}
+                                 errorMinValue={errorMinValue}
                     />
                 </div>
                 <div className="control">
@@ -88,13 +90,22 @@ function App() {
 
             <div className="block">
                 <div className="screen">
-                    <Screen value={value}/>
+                    <Screen value={value}
+                            maxValue={maxValue}
+                            editMode={editMode}
+                            errorMaxValue={errorMaxValue}
+                            errorMinValue={errorMinValue}
+                    />
                 </div>
 
                 <div className="control">
                     <Control value={value}
+                             maxValue={maxValue}
                              changeValue={changeValue}
                              resetValue={resetValue}
+                             editMode={editMode}
+                             errorMaxValue={errorMaxValue}
+                             errorMinValue={errorMinValue}
                     />
                 </div>
             </div>

@@ -5,8 +5,12 @@ import {Button} from './Button';
 
 type PropsType = {
     value: number
+    maxValue: number
     changeValue: () => void
     resetValue: () => void
+    editMode: boolean
+    errorMaxValue: string
+    errorMinValue: string
 }
 
 export function Control(props: PropsType) {
@@ -18,8 +22,9 @@ export function Control(props: PropsType) {
         props.resetValue()
     }
 
-    const isDisabledInc = props.value > 4
-    const isDisabledReset = !props.value
+    const isEditOrError = props.editMode || Boolean(props.errorMaxValue || props.errorMinValue);
+    const isDisabledInc = props.value >= props.maxValue || isEditOrError
+    const isDisabledReset = !props.value || isEditOrError
 
     return (
         <div className={styles.control}>
