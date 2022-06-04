@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Control} from './components/Control';
 import {Screen} from './components/Screen';
@@ -20,15 +20,69 @@ function App() {
         setValue(0);
     }
 
+    const [editMode, setEditMode] = useState<boolean>(false)
+    const [maxValue, setMaxValue] = useState<number>(5);
+    const [minValue, setMinValue] = useState<number>(0);
+    const [errorMaxValue, setErrorMaxValue] = useState<string>('');
+    const [errorMinValue, setErrorMinValue] = useState<string>('');
+
+    const changeMaxValue = (newMaxValue: number) => {
+        setMaxValue(newMaxValue)
+        editMode || onEditMode()
+    }
+    const changeMinValue = (newMinValue: number) => {
+        setMinValue(newMinValue)
+        editMode || onEditMode()
+    }
+    const onEditMode = () => {
+        setEditMode(true);
+    }
+    const offEditMode = () => {
+        setEditMode(false);
+    }
+
+    useEffect(() => {
+        const minValue = localStorage.getItem('minValue');
+        const maxValue = localStorage.getItem('maxValue');
+        if (minValue && maxValue) {
+            setMinValue(Number(minValue))
+            setMaxValue(Number(maxValue))
+        }
+    }, [])
+
+    useEffect(() => {
+        if (maxValue <= minValue) {
+            setErrorMaxValue('Incorrect Value')
+            setErrorMinValue('Incorrect Value')
+            offEditMode()
+        } else if (minValue < 0) {
+            setErrorMinValue('Incorrect Value')
+            offEditMode()
+        } else {
+            setErrorMaxValue('')
+            setErrorMinValue('')
+        }
+    }, [maxValue, minValue])
+
 
     return (
         <div className="App">
             <div className="block">
                 <div className="screen">
-                    <InputValues/>
+                    <InputValues changeMaxValue={changeMaxValue}
+                                 changeMinValue={changeMinValue}
+                                 maxValue={maxValue}
+                                 minValue={minValue}
+                                 errorMinValue={errorMinValue}
+                                 errorMaxValue={errorMaxValue}
+                    />
                 </div>
                 <div className="control">
-                    <SetValues/>
+                    <SetValues offEditMode={offEditMode}
+                               editMode={editMode}
+                               maxValue={maxValue}
+                               minValue={minValue}
+                    />
                 </div>
             </div>
 
@@ -44,7 +98,6 @@ function App() {
                     />
                 </div>
             </div>
-
         </div>
     );
 }
