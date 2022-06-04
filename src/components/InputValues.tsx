@@ -3,26 +3,32 @@ import {InputNumber} from './InputNumber';
 import styles from './InputValues.module.css';
 
 type PropsType = {
-
+    changeMaxValue: (value: number) => void
+    changeMinValue: (value: number) => void
+    maxValue: number
+    minValue: number
+    errorMinValue: string
+    errorMaxValue: string
 }
 
 export function InputValues(props: PropsType) {
+
     return (
         <div>
             <div className={styles.max}>
                 <InputNumber title={'Max value:'}
-                             max={5}
-                             min={0}
                              placeholder={'max'}
-                             value={5}
+                             value={props.maxValue}
+                             changeValue={props.changeMaxValue}
+                             error={props.errorMaxValue}
                 />
             </div>
             <div className={styles.min}>
                 <InputNumber title={'Start value:'}
-                             max={5}
-                             min={0}
                              placeholder={'min'}
-                             value={0}
+                             value={props.minValue}
+                             changeValue={props.changeMinValue}
+                             error={props.errorMinValue}
                 />
             </div>
         </div>
