@@ -1,25 +1,29 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import styles from './InputNumber.module.css';
 
 type PropsType = {
     title: string
     value: number
-    max: number
-    min: number
     placeholder: string
-
+    changeValue: (value: number) => void
+    error: string
 }
 
 export function InputNumber(props: PropsType) {
+
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        props.changeValue(Number(e.currentTarget.value))
+    }
+
+
     return (
         <label className={styles.label}>
             <span className={styles.title}>{props.title}</span>
             <input type="number"
-                   max={props.max}
-                   min={props.min}
                    placeholder={props.placeholder}
-                   className={styles.number}
+                   className={props.error ? `${styles.invalid} ${styles.number}` : styles.number}
                    value={props.value}
+                   onChange={onChangeHandler}
             />
         </label>
     );

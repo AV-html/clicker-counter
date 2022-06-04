@@ -25,14 +25,14 @@
     color: #a0a0a0;
 }
 
-.number:invalid {
+.invalid {
     border: 2px solid red;
     background-color: lightcoral;
 }
 
-.number:valid {
-    border: 2px solid rgb(99, 218, 252);
-}
+/*.number:valid {*/
+/*    border: 2px solid rgb(99, 218, 252);*/
+/*}*/
 
 .number:focus {
     outline: none;
