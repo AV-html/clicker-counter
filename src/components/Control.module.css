@@ -1,8 +1,12 @@
 .control {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .control button {
     flex: 1 1 auto;
+}
+.control button:last-child {
+    margin-bottom: 0;
 }
 
